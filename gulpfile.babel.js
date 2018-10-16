@@ -25,6 +25,7 @@ const paths = {
   js: {
     src: 'src/**/*.js',
     dest: 'dist/',
+    // don't add the src folder to path. Use a path relative to the src folder. Use array even if only one bundle.
     bundles: ['js/main.js', 'js/restaurant_info.js', 'sw.js']
   }
 };
@@ -34,6 +35,7 @@ const copy = {
   src: ['src/**/*.*'],
   dest: 'dist/'
 };
+// copy.src will exclude all sources in paths object. 'copy' task will log the sources used.
 Object.keys(paths).forEach(prop => {
   let src = [].concat(paths[prop].src);
   src = src.filter(path => path[0] !== "!").map(path => `!${path}`);
@@ -51,7 +53,8 @@ gulp.task('responsive:images', function() {
   log(c.cyan('Creating Responsive images...'));
   return gulp.src(paths.responsive.src)
     .pipe(responsive({
-      // resize all jpg images to three different sizes: 300, 600 and 800 px wide.
+      // Here is where you can change sizes and suffixes to fit your needs. Right now 
+      // we are resizing all jpg images to three different sizes: 300, 600 and 800 px wide.
       '**/*.jpg': [{
         width: 800,
         quality: 70,
@@ -97,9 +100,13 @@ gulp.task('sync', ['build'], function() {
   });
 
   gulp.watch(copy.src, ['copy']).on('change', browserSync.reload);
+
+  // Add more watchers here if you add more tasks. Use this watcher as an example
   gulp.watch(paths.responsive.src, ['responsive:images']).on('change', browserSync.reload);
 
-  // Each bundle on 'update' will call browserSync.stream() at the end of the pipe.
+  // if your task requires special attention, then implement a different way of watching for
+  // changes, and use browserSync.stream(). For example, here each bundle on 'update' will
+  // call browserSync.stream() at the end of the pipe in the bundle() function.
   Object.keys(jsBundles).forEach(function(key) {
     var b = jsBundles[key];
     b.on('update', function() {
