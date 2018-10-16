@@ -22,7 +22,7 @@ Place all your source files in these folders. This includes all files required t
 
 ### .gitkeep files
 
-Once you add your source files to `src/`, `src/css/', `src/js/'` and `src/images/`, you can delete this files. They are there only to allow all this folders to be part of the repository. So as long as the folder isn't empty, git will keep this folders.
+Once you add your source files to `src/`, `src/css/`, `src/js/'` and `src/images/`, you can delete this files. They are there only to allow all this folders to be part of the repository. So as long as the folder isn't empty, git will keep this folders.
 
 ### Bundles
 
