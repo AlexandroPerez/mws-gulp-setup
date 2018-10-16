@@ -20,6 +20,10 @@ Place all your source files in these folders. This includes all files required t
   * Place all your images in `src/images/`. Once responsive images are created, for `.jpg` files only, they'll be placed on the `dist/img/` folder using the settings found in the `gulpfile`.
   * All other images, like `png` or `gif`, can be placed in the `src/images/` folder as well, but they will be copied into `dist/images/`, **not** `dist/img/`
 
+### .gitkeep files
+
+Once you add your source files to `src/`, `src/css/', `src/js/'` and `src/images/`, you can delete this files. They are there only to allow all this folders to be part of the repository. So as long as the folder isn't empty, git will keep this folders.
+
 ### Bundles
 
 This setup creates three bundles: 
