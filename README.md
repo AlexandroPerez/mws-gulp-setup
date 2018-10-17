@@ -119,7 +119,7 @@ const paths = {
   },
   css: {
     src: 'src/css/**/*.css',
-    dest: 'dist/css'
+    dest: 'dist/css/'
   }
 };
 ```
